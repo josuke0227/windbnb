@@ -1,0 +1,7 @@
+.back {
+  color: var(--icon-red);
+}
+
+.back:hover {
+  cursor: pointer;
+}

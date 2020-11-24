@@ -1,0 +1,22 @@
+.guests-expanded {
+  flex: 1;
+  height: inherit;
+  border-right: 1px solid var(--gadget-gray);
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8.3px;
+  padding-left: 16px;
+}
+
+.guests-expanded:focus {
+  border: 1px solid var(--winbnb-black);
+}
+
+.guests-title {
+  padding-bottom: 8px;
+}
+
+.text {
+  color: var(--unfocusd-gray);
+}

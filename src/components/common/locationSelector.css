@@ -1,0 +1,32 @@
+.place-expanded {
+  flex: 1;
+  height: inherit;
+  border-right: 1px solid var(--gadget-gray);
+  font-size: 10px;
+  padding-top: 8.3px;
+  padding-bottom: 8.3px;
+  padding-left: 16px;
+}
+
+.place-form-expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding-bottom: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+::placeholder {
+  font-size: 10px;
+  color: var(--unfocusd-gray);
+  border: none;
+}
+
+.text {
+  color: var(--unfocusd-gray);
+}
