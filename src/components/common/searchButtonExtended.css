@@ -28,6 +28,6 @@ button:hover {
 
 @media (max-width: 450px) {
   .search-expanded {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 }

@@ -100,11 +100,10 @@ nav {
 
   nav {
     height: 7rem;
+    padding: 0.5rem;
   }
-}
 
-@media (max-width: 480px) {
-  nav {
-    padding: 0;
+  .logo {
+    padding-bottom: 0.5rem;
   }
 }
