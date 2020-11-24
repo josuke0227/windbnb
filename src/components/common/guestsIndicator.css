@@ -5,8 +5,7 @@
   border-right: 1px solid var(--gadget-gray);
   display: flex;
   flex-direction: column;
-  padding-top: 8.3px;
-  padding-left: 16px;
+  padding: 8.4px 1rem 0px 1rem;
 }
 
 .guests-expanded:focus {
@@ -14,7 +13,7 @@
 }
 
 .guests-title {
-  padding-bottom: 8px;
+  padding-bottom: 0.2rem;
 }
 
 .text {
