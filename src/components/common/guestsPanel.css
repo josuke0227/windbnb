@@ -14,7 +14,7 @@
 
 .title,
 .condition {
-  font-size: var(--ss-font-size);
+  font-size: var(--small-font-size);
 }
 
 .title {

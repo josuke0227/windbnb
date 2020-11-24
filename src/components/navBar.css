@@ -47,7 +47,7 @@ nav {
 .place,
 .guests {
   flex: 1;
-  font-size: var(--ss-font-size);
+  font-size: var(--small-font-size);
   color: var(--unfocusd-gray);
   border-right: 1px solid var(--gadget-gray);
   display: flex;
