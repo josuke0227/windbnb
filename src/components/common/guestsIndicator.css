@@ -1,7 +1,6 @@
 .guests-expanded {
   flex: 1;
   height: inherit;
-  border-right: 1px solid var(--gadget-gray);
   font-size: var(--small-font-size);
   display: flex;
   flex-direction: column;
