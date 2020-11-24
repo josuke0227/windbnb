@@ -1,6 +1,5 @@
 .guests-expanded {
   flex: 1;
-  height: inherit;
   font-size: var(--small-font-size);
   border-right: 1px solid var(--gadget-gray);
   display: flex;
@@ -21,12 +20,6 @@
 }
 
 @media (max-width: 620px) {
-  .guests-expanded {
-    border-right: none;
-  }
-}
-
-@media (max-width: 450px) {
   .guests-expanded {
     border-right: none;
   }

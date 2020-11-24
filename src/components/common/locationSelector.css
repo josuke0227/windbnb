@@ -1,6 +1,5 @@
 .place-expanded {
   flex: 1;
-  height: inherit;
   border-right: 1px solid var(--gadget-gray);
   font-size: var(--small-font-size);
   padding: 8.4px 1rem 0px 1rem;

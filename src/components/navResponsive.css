@@ -19,6 +19,7 @@
 }
 
 .windows {
+  height: 3.3rem;
   grid-area: windows;
   display: flex;
   flex-direction: row;
@@ -47,6 +48,10 @@
       "location"
       "guests"
       "search";
+  }
+
+  .windows {
+    height: 6.6rem;
   }
 
   .nav-responsive {
