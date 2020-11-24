@@ -38,6 +38,7 @@ input:focus {
 @media (max-width: 450px) {
   .place-expanded {
     border-bottom: 1px solid var(--gadget-gray);
+    border-right: none;
   }
 
   .search-expanded {
