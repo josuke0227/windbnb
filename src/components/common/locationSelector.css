@@ -2,7 +2,7 @@
   flex: 1;
   height: inherit;
   border-right: 1px solid var(--gadget-gray);
-  font-size: 10px;
+  font-size: var(--small-font-size);
   padding-top: 8.3px;
   padding-bottom: 8.3px;
   padding-left: 16px;
@@ -17,12 +17,16 @@ label {
   padding-bottom: 5px;
 }
 
+input {
+  width: 90%;
+}
+
 input:focus {
   outline: none;
 }
 
 ::placeholder {
-  font-size: 10px;
+  font-size: var(--small-font-size);
   color: var(--unfocusd-gray);
   border: none;
 }

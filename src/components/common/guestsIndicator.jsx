@@ -21,7 +21,7 @@ const GuestsIndicator = ({
         className="text"
         style={
           adultGuests || childGuests
-            ? { color: "#333333", fontSize: "10px" }
+            ? { color: "#333333", fontSize: "14px" }
             : null
         }
       >

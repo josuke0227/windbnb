@@ -137,7 +137,7 @@ const NavBar = ({
                   adultGuests || childGuests
                     ? {
                         color: "#333333",
-                        fontSize: "10px",
+                        fontSize: "14px",
                       }
                     : null
                 }
