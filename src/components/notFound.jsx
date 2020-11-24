@@ -9,7 +9,7 @@ const NotFound = () => {
       <div>
         Please click
         <span className="back" onClick={() => window.location.reload()}>
-          here&nbsp;
+          &nbsp;here&nbsp;
         </span>
         to reload.
       </div>
