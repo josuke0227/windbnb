@@ -113,6 +113,10 @@ input:focus {
       "search";
   }
 
+  .nav-responsive {
+    height: 25.5rem;
+  }
+
   .windows {
     flex-direction: column;
   }
@@ -126,6 +130,6 @@ input:focus {
   }
 
   .search-expanded {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
   }
 }
