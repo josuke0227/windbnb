@@ -129,6 +129,11 @@ input:focus {
     padding-bottom: 0.5rem;
   }
 
+  .place-expanded,
+  .guests-expanded {
+    border-right: none !important;
+  }
+
   .search-expanded {
     margin-top: 0.5rem;
   }
