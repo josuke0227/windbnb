@@ -8,7 +8,14 @@ const Card = (props) => {
         return (
           <div key={index} className="card">
             <div className="image">
-              <img src={stay.photo} alt="" width="300px" height="200px" />
+              {/* <img id="rooms" src={stay.photo} alt="" /> */}
+              <img
+                id="rooms"
+                src={stay.photo}
+                alt=""
+                width="395px"
+                height="269px"
+              />
             </div>
             <div className="meta-data">
               <div

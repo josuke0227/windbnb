@@ -37,7 +37,7 @@
 .type,
 .beds,
 .number {
-  font-size: var(--ss-font-size);
+  font-size: var(--small-font-size);
 }
 
 .type,
@@ -54,7 +54,7 @@
 }
 
 .card-title {
-  font-size: var(--small-font-size);
+  font-size: var(--mid-font-size);
   color: var(--winbnb-black);
 }
 
@@ -66,6 +66,6 @@
   color: var(--icon-red);
 }
 
-img {
+#rooms {
   border-radius: 24px;
 }
