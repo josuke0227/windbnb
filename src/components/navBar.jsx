@@ -111,7 +111,7 @@ const NavBar = ({
             <div
               onClick={onPanelClick}
               className="place"
-              style={query ? { color: "#333333", fontSize: "10px" } : null}
+              style={query ? { color: "#333333", fontSize: "14px" } : null}
             >
               {query ? (
                 <React.Fragment>
