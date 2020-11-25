@@ -1,3 +1,12 @@
+@keyframes shrink {
+  from {
+    height: 21rem;
+  }
+  to {
+    height: 5rem;
+  }
+}
+
 nav {
   top: 0%;
   left: 0;
@@ -9,6 +18,8 @@ nav {
   padding-right: 6rem;
   padding-top: 1rem;
   z-index: 2;
+  animation-name: shrink;
+  animation-duration: 0.1s;
 }
 
 .container {

@@ -1,4 +1,5 @@
 import React from "react";
+import "./modal.css";
 
 const Modal = ({
   isExpanded,
@@ -13,11 +14,7 @@ const Modal = ({
       style={
         isExpanded
           ? {
-              position: "fixed",
               backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-              width: "100%",
-              height: "100%",
-              left: "0",
               zIndex: `${zIndex}`,
             }
           : { display: "none" }

@@ -1,3 +1,12 @@
+@keyframes expand {
+  from {
+    height: 10rem;
+  }
+  to {
+    height: 21rem;
+  }
+}
+
 .nav-expanded {
   background-color: white;
   top: 0%;
@@ -7,6 +16,8 @@
   position: fixed;
   padding-left: 6rem;
   padding-right: 6rem;
+  animation-name: expand;
+  animation-duration: 0.1s;
 }
 
 .search-panel-expanded {

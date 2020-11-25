@@ -15,7 +15,11 @@ const LocationSelector = ({
         isFocused ? { border: "1px solid #333333", borderRadius: "16px" } : null
       }
     >
-      <form className="place-form-expanded" id="place-form">
+      <form
+        className="place-form-expanded"
+        id="place-form"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <label htmlFor="place-input" id="form-label">
           LOCATION
         </label>

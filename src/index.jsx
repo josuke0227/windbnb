@@ -70,15 +70,13 @@ class App extends React.Component {
     }
   };
 
-  onInputFocused = () => {
+  onInputFocused = (e) => {
     const isFocused = true;
     const isOpened = false;
     this.setState({ isFocused, isOpened });
   };
 
   onInputChange = (e) => {
-    console.log(e.target.value);
-    e.preventDefault();
     const searchQuery = e.target.value;
     this.setState({ searchQuery });
   };
