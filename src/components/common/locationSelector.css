@@ -38,8 +38,4 @@ input:focus {
     border-bottom: 1px solid var(--gadget-gray);
     border-right: none;
   }
-
-  .search-expanded {
-    margin-top: 0.5rem;
-  }
 }

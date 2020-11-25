@@ -1,4 +1,5 @@
 import React from "react";
+import SearchPanelContainer from "./styled-components/searchPanelContainer";
 import CancelIcon from "./common/cancelIcon";
 
 const SearchPanel = ({
@@ -9,9 +10,10 @@ const SearchPanel = ({
   adultGuests,
   childGuests,
   onSearhButtonClick,
+  width,
 }) => {
   return (
-    <div className="search-panel">
+    <SearchPanelContainer width={width}>
       <div
         onClick={onSearchPanelClick}
         className="place"
@@ -57,7 +59,7 @@ const SearchPanel = ({
       >
         <span className="material-icons md-18">search</span>
       </div>
-    </div>
+    </SearchPanelContainer>
   );
 };
 

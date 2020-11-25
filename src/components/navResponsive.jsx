@@ -23,7 +23,7 @@ const NavExpanded = ({
   recaps,
 }) => {
   return (
-    <div className="nav-responsive">
+    <div>
       <div className="selectors">
         <div className="windows">
           <LocationSelector

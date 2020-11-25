@@ -25,9 +25,3 @@ button:hover {
   color: white;
   padding-left: 24px;
 }
-
-@media (max-width: 450px) {
-  .search-expanded {
-    margin-top: 1rem;
-  }
-}

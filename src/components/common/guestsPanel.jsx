@@ -1,5 +1,6 @@
 import React from "react";
 import Counter from "./counter";
+import PanelContainer from "../styled-components/panelContainer";
 import "./guestsPanel.css";
 
 const GuestsPanel = ({
@@ -10,32 +11,29 @@ const GuestsPanel = ({
   currentWidth,
 }) => {
   return (
-    <div
+    <PanelContainer
       className="guests-panel"
       id="guests-panel"
-      style={
-        isOpened
-          ? null
-          : currentWidth <= 450
-          ? { display: "none" }
-          : { visibility: "hidden" }
-      }
+      status={isOpened}
+      width={currentWidth}
     >
-      <Counter
-        title="Adults"
-        customerAttribution="adult"
-        condition="Ages 13 or above"
-        count={adultGuests}
-        onGuestNumChanged={onGuestNumChanged}
-      />
-      <Counter
-        title="Children"
-        customerAttribution="child"
-        condition="Ages 2 - 12"
-        count={childGuests}
-        onGuestNumChanged={onGuestNumChanged}
-      />
-    </div>
+      <div>
+        <Counter
+          title="Adults"
+          customerAttribution="adult"
+          condition="Ages 13 or above"
+          count={adultGuests}
+          onGuestNumChanged={onGuestNumChanged}
+        />
+        <Counter
+          title="Children"
+          customerAttribution="child"
+          condition="Ages 2 - 12"
+          count={childGuests}
+          onGuestNumChanged={onGuestNumChanged}
+        />
+      </div>
+    </PanelContainer>
   );
 };
 

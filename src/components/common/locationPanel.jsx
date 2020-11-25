@@ -1,4 +1,5 @@
 import React from "react";
+import PanelContainer from "../styled-components/panelContainer";
 import "./locationPanel.css";
 
 const LocationPanel = ({
@@ -31,17 +32,7 @@ const LocationPanel = ({
     );
 
   return (
-    <div
-      className="location-panel"
-      id="location-panel"
-      style={
-        isFocused
-          ? null
-          : currentWidth <= 450
-          ? { display: "none" }
-          : { visibility: "hidden" }
-      }
-    >
+    <PanelContainer id="location-panel" width={currentWidth} status={isFocused}>
       <ul>
         {extractedPlaces.map((place, index) => (
           <li className="city" key={index} id={index}>
@@ -58,7 +49,7 @@ const LocationPanel = ({
           </li>
         ))}
       </ul>
-    </div>
+    </PanelContainer>
   );
 };
 

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Nav from "./styled-components/nav";
+import NavContainer from "./styled-components/navContainer";
 import NavResponsive from "./navResponsive";
 import NavExpanded from "./navExpanded";
 import guestsRecap from "../util/guestsRecap";
@@ -58,7 +60,7 @@ const NavBar = ({
   const recaps = guestsRecap(adultGuests, childGuests);
 
   const defaultContent = (
-    <div className="container">
+    <NavContainer width={currentWidth}>
       <div className="logo">
         <img
           src={logo}
@@ -74,8 +76,9 @@ const NavBar = ({
         adultGuests={adultGuests}
         childGuests={childGuests}
         onSearhButtonClick={onSearhButtonClick}
+        width={currentWidth}
       />
-    </div>
+    </NavContainer>
   );
 
   const responsiveLayout = (
@@ -120,25 +123,18 @@ const NavBar = ({
   );
 
   return (
-    <nav
-      style={
-        isExpanded === true
-          ? currentWidth < 790
-            ? { height: "24rem" }
-            : { height: "21rem" }
-          : currentWidth <= 620
-          ? { height: "7rem" }
-          : { height: "5rem" }
-      }
+    <Nav
       onClick={onExpandedNavClick}
       onWheel={onWindowScroll}
+      width={currentWidth}
+      isExpanded={isExpanded}
     >
       {isExpanded === true
-        ? currentWidth < 790
+        ? currentWidth <= 780
           ? responsiveLayout
           : expandedLayout
         : defaultContent}
-    </nav>
+    </Nav>
   );
 };
 

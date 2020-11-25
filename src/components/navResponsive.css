@@ -35,12 +35,6 @@
   grid-area: location;
 }
 
-@media (max-width: 610px) {
-  .nav-responsive {
-    padding: 1rem;
-  }
-}
-
 @media (max-width: 450px) {
   .selectors {
     grid-template-areas:
