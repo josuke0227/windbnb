@@ -1,15 +1,5 @@
-.guests-panel {
-  margin: 1rem 0rem;
-  width: 13rem;
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
-  overflow-y: scroll;
-  padding: 0rem 1rem;
-  flex: 1;
-}
-
-.adults {
-  margin-bottom: 2rem;
+.counter {
+  margin-top: 0.5rem;
 }
 
 .title,
@@ -44,11 +34,4 @@
 .add,
 .current-count {
   margin-left: 0.5rem;
-}
-
-@media (max-width: 450px) {
-  .guests-panel {
-    margin: 1rem 0 0 0;
-    padding: 0 0 1rem 1rem;
-  }
 }

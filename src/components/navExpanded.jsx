@@ -1,14 +1,14 @@
-import "./navExpanded.css";
 import React from "react";
 import LocationPanel from "./common/locationPanel";
 import LocationSelector from "./common/locationSelector";
 import GuestsIndicator from "./common/guestsIndicator";
 import GuestsPanel from "./common/guestsPanel";
 import SearchButtonExpanded from "./common/searchButtonExtended";
+import "./navExpanded.css";
 
 const NavExpanded = ({
   isFocused,
-  onPanelClick,
+  onExpandedNavClick,
   onInputFocused,
   stays,
   onInputChange,
@@ -26,7 +26,7 @@ const NavExpanded = ({
   return (
     <nav
       className="nav-expanded"
-      onClick={onPanelClick}
+      onClick={onExpandedNavClick}
       onWheel={onWindowScroll}
     >
       <div className="search-panel-expanded">

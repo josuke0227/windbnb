@@ -1,0 +1,6 @@
+.stays-counter {
+  color: var(--header-gray);
+  font-size: var(--small-font-size);
+  flex: 0.3;
+  text-align: end;
+}

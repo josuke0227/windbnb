@@ -1,5 +1,6 @@
-import "./guestsPanel.css";
 import React from "react";
+import Counter from "./counter";
+import "./guestsPanel.css";
 
 const GuestsPanel = ({
   isOpened,
@@ -11,6 +12,7 @@ const GuestsPanel = ({
   return (
     <div
       className="guests-panel"
+      id="guests-panel"
       style={
         isOpened
           ? null
@@ -19,32 +21,20 @@ const GuestsPanel = ({
           : { visibility: "hidden" }
       }
     >
-      <div className="adults">
-        <div className="title">Adults</div>
-        <div className="condition">Ages 13 or above</div>
-        <div className="control-panel" id="adult">
-          <span className="subtract" onClick={onGuestNumChanged}>
-            -
-          </span>
-          <span className="current-count">{adultGuests}</span>
-          <span className="add" onClick={onGuestNumChanged}>
-            +
-          </span>
-        </div>
-      </div>
-      <div className="child">
-        <div className="title">Children</div>
-        <div className="condition">Ages 2 - 12</div>
-        <div className="control-panel" id="child">
-          <span className="subtract" onClick={onGuestNumChanged}>
-            -
-          </span>
-          <span className="current-count">{childGuests}</span>
-          <span className="add" onClick={onGuestNumChanged}>
-            +
-          </span>
-        </div>
-      </div>
+      <Counter
+        title="Adults"
+        customerAttribution="adult"
+        condition="Ages 13 or above"
+        count={adultGuests}
+        onGuestNumChanged={onGuestNumChanged}
+      />
+      <Counter
+        title="Children"
+        customerAttribution="child"
+        condition="Ages 2 - 12"
+        count={childGuests}
+        onGuestNumChanged={onGuestNumChanged}
+      />
     </div>
   );
 };

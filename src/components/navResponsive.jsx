@@ -1,13 +1,13 @@
-import "./navResponsive.css";
 import React from "react";
 import LocationPanel from "./common/locationPanel";
 import LocationSelector from "./common/locationSelector";
 import GuestsIndicator from "./common/guestsIndicator";
 import GuestsPanel from "./common/guestsPanel";
 import SearchButtonExpanded from "./common/searchButtonExtended";
+import "./navResponsive.css";
 
 const NavExpanded = ({
-  onPanelClick,
+  onExpandedNavClick,
   onWindowScroll,
   query,
   onInputFocused,
@@ -27,8 +27,8 @@ const NavExpanded = ({
   return (
     <nav
       className="nav-responsive"
-      onClick={onPanelClick}
       onWheel={onWindowScroll}
+      onClick={onExpandedNavClick}
     >
       <div className="selectors">
         <div className="windows">

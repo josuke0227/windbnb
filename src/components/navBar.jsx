@@ -1,9 +1,10 @@
-import logo from "../img/logo.png";
-import "./navBar.css";
 import React, { useState, useEffect } from "react";
 import NavResponsive from "./navResponsive";
 import NavExpanded from "./navExpanded";
 import guestsRecap from "../util/guestsRecap";
+import SearchPanel from "./searchPanel";
+import logo from "../img/logo.png";
+import "./navBar.css";
 
 const getWidth = () =>
   window.innerWidth ||
@@ -40,7 +41,8 @@ const NavBar = ({
   onInputFocused,
   stays,
   query,
-  onPanelClick,
+  onSearchPanelClick,
+  onExpandedNavClick,
   onLiClick,
   onGuestNumChanged,
   adultGuests,
@@ -60,8 +62,8 @@ const NavBar = ({
       return (
         <NavResponsive
           currentWidth={currentWidth}
+          onExpandedNavClick={onExpandedNavClick}
           isFocused={isFocused}
-          onPanelClick={onPanelClick}
           onInputFocused={onInputFocused}
           stays={stays}
           onInputChange={onInputChange}
@@ -80,7 +82,7 @@ const NavBar = ({
     return (
       <NavExpanded
         isFocused={isFocused}
-        onPanelClick={onPanelClick}
+        onExpandedNavClick={onExpandedNavClick}
         onInputFocused={onInputFocused}
         stays={stays}
         onInputChange={onInputChange}
@@ -107,61 +109,15 @@ const NavBar = ({
               onClick={() => window.location.reload()}
             />
           </div>
-          <div className="search-panel">
-            <div
-              onClick={onPanelClick}
-              className="place"
-              style={query ? { color: "#333333", fontSize: "14px" } : null}
-            >
-              {query ? (
-                <React.Fragment>
-                  <span className="content">{query}</span>
-                  <span
-                    className="material-icons md-18 query-icon"
-                    onClick={onCancelIconClick}
-                    id="place"
-                  >
-                    cancel
-                  </span>
-                </React.Fragment>
-              ) : (
-                "Place"
-              )}
-            </div>
-            {recaps.map((recap, index) => (
-              <div
-                onClick={onPanelClick}
-                className="guests"
-                key={index}
-                style={
-                  adultGuests || childGuests
-                    ? {
-                        color: "#333333",
-                        fontSize: "14px",
-                      }
-                    : null
-                }
-              >
-                {
-                  <React.Fragment>
-                    <span className="content">{recap}</span>
-                    {recap === "Add Guests" ? null : (
-                      <span
-                        id={recap}
-                        className="material-icons md-18"
-                        onClick={onCancelIconClick}
-                      >
-                        cancel
-                      </span>
-                    )}
-                  </React.Fragment>
-                }
-              </div>
-            ))}
-            <div className="search-button" onClick={onSearhButtonClick}>
-              <span className="material-icons md-18">search</span>
-            </div>
-          </div>
+          <SearchPanel
+            onSearchPanelClick={onSearchPanelClick}
+            query={query}
+            onCancelIconClick={onCancelIconClick}
+            recaps={recaps}
+            adultGuests={adultGuests}
+            childGuests={childGuests}
+            onSearhButtonClick={onSearhButtonClick}
+          />
         </div>
       </nav>
     );

@@ -1,4 +1,3 @@
-import "./index.css";
 import React from "react";
 import ReactDom from "react-dom";
 import NavBar from "./components/navBar";
@@ -7,6 +6,8 @@ import Card from "./components/card";
 import Modal from "./components/modal";
 import NotFound from "./components/notFound";
 import Footer from "./components/footer";
+import ResultNumIndicator from "./components/common/resultNumIndicator";
+import "./index.css";
 
 class App extends React.Component {
   state = {
@@ -26,22 +27,28 @@ class App extends React.Component {
     this.setState({ stays });
   }
 
-  onSearchPanelClick = (e) => {
-    const className = e.target.className;
+  onSearchPanelClick = () => {
+    this.setState({ isExpanded: true });
+  };
+
+  onExpandedNavClick = (e) => {
+    const closingFactors = [
+      "panels",
+      "nav-expanded",
+      "dummy",
+      "selectors",
+      "nav-responsive",
+    ];
     const parentClassName = e.target.parentNode.className;
-    const isExpanded =
-      className === "nav-expanded" ||
-      className === "dummy" ||
-      parentClassName === "nav-expanded"
-        ? false
-        : true;
-    if (
-      e.target.parentNode.tagName === "BUTTON" ||
-      e.target.tagName === "BUTTON" ||
-      e.target.id
-    )
+    const className = e.target.className;
+    const id = e.target.id;
+
+    if (parentClassName === "search-panel-expanded" || id) return;
+
+    if (closingFactors.includes(className)) {
+      this.setState({ isExpanded: false });
       return;
-    this.setState({ isExpanded });
+    }
   };
 
   onModalClick = () => {
@@ -76,10 +83,8 @@ class App extends React.Component {
     this.setState({ searchQuery });
   };
 
-  onLiClick = (e) => {
-    const className = e.target.className;
-    const searchQuery = e.target.innerText;
-    if (className !== "city-name") return;
+  onLiClick = (city, country) => {
+    const searchQuery = `${city}, ${country}`;
     const isFocused = false;
     this.setState({ searchQuery, isFocused });
   };
@@ -113,8 +118,7 @@ class App extends React.Component {
   onCancelIconClick = (e) => {
     const queryId = e.target.id;
 
-    if (queryId.toLowerCase().startsWith("place"))
-      this.setState({ searchQuery: "" });
+    if (queryId === "place") this.setState({ searchQuery: "" });
 
     if (queryId.toLowerCase().startsWith("adult"))
       this.setState({ adultGuests: 0 });
@@ -154,37 +158,36 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <NavBar
-          onPanelClick={this.onSearchPanelClick}
           isExpanded={this.state.isExpanded}
           isFocused={this.state.isFocused}
-          onInputFocused={this.onInputFocused}
           stays={stays}
           query={this.state.searchQuery}
-          onChange={this.onInputChange}
-          onLiClick={this.onLiClick}
-          onGuestNumChanged={this.onGuestNumChanged}
           adultGuests={this.state.adultGuests}
           childGuests={this.state.childGuests}
-          onGuestsClicked={this.onGuestsClicked}
           isOpened={this.state.isOpened}
+          onChange={this.onInputChange}
+          onSearchPanelClick={this.onSearchPanelClick}
+          onExpandedNavClick={this.onExpandedNavClick}
+          onInputFocused={this.onInputFocused}
+          onLiClick={this.onLiClick}
+          onGuestNumChanged={this.onGuestNumChanged}
           onWindowScroll={this.onWindowScroll}
           onSearhButtonClick={this.onSearhButtonClick}
           onCancelIconClick={this.onCancelIconClick}
           onInputChange={this.onInputChange}
+          onGuestsClicked={this.onGuestsClicked}
         />
         <main onScroll={this.onWindowScroll}>
           <Modal
             isExpanded={this.state.isExpanded}
             onModalClick={this.onModalClick}
             onWindowScroll={this.onWindowScroll}
+            opacity={0.4}
+            zIndex={1}
           />
           <header>
             <div className="header-title">Stays in Finland</div>
-            <div className="stays-counter">
-              {!Array.isArray(this.state.result)
-                ? "0 Stays"
-                : `${stays.length} Stays`}
-            </div>
+            <ResultNumIndicator result={this.state.result} stays={stays} />
           </header>
           {!Array.isArray(this.state.result) ? (
             <NotFound />

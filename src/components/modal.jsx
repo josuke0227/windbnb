@@ -1,11 +1,27 @@
 import React from "react";
-import "./modal.css";
 
-const Modal = ({ isExpanded, onModalClick, onWindowScroll }) => {
+const Modal = ({
+  isExpanded,
+  onModalClick,
+  onWindowScroll,
+  opacity,
+  zIndex,
+}) => {
   return (
     <div
       className="modal"
-      style={isExpanded ? null : { display: "none" }}
+      style={
+        isExpanded
+          ? {
+              position: "fixed",
+              backgroundColor: `rgba(0, 0, 0, ${opacity})`,
+              width: "100%",
+              height: "100%",
+              left: "0",
+              zIndex: `${zIndex}`,
+            }
+          : { display: "none" }
+      }
       onClick={onModalClick}
       onWheel={onWindowScroll}
     ></div>
