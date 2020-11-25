@@ -1,5 +1,5 @@
 .guests-panel {
-  margin: 1rem 0rem;
+  margin: 1rem 0 0 0;
   width: 13rem;
   box-shadow: var(--shadow);
   border-radius: var(--radius);

@@ -41,6 +41,7 @@ main {
 }
 
 .show-case {
+  margin: auto;
   width: fit-content;
   display: grid;
   grid-template-columns: auto auto auto;
