@@ -57,71 +57,89 @@ const NavBar = ({
   const currentWidth = useCurrentWidth();
   const recaps = guestsRecap(adultGuests, childGuests);
 
-  if (isExpanded === true) {
-    if (currentWidth < 790)
-      return (
-        <NavResponsive
-          currentWidth={currentWidth}
-          onExpandedNavClick={onExpandedNavClick}
-          isFocused={isFocused}
-          onInputFocused={onInputFocused}
-          stays={stays}
-          onInputChange={onInputChange}
-          query={query}
-          onLiClick={onLiClick}
-          onGuestNumChanged={onGuestNumChanged}
-          adultGuests={adultGuests}
-          childGuests={childGuests}
-          onGuestsClicked={onGuestsClicked}
-          isOpened={isOpened}
-          onWindowScroll={onWindowScroll}
-          onSearhButtonClick={onSearhButtonClick}
-          recaps={recaps}
+  const defaultContent = (
+    <div className="container">
+      <div className="logo">
+        <img
+          src={logo}
+          alt="windbnb-logo"
+          onClick={() => window.location.reload()}
         />
-      );
-    return (
-      <NavExpanded
-        isFocused={isFocused}
-        onExpandedNavClick={onExpandedNavClick}
-        onInputFocused={onInputFocused}
-        stays={stays}
-        onInputChange={onInputChange}
+      </div>
+      <SearchPanel
+        onSearchPanelClick={onSearchPanelClick}
         query={query}
-        onLiClick={onLiClick}
-        onGuestNumChanged={onGuestNumChanged}
+        onCancelIconClick={onCancelIconClick}
+        recaps={recaps}
         adultGuests={adultGuests}
         childGuests={childGuests}
-        onGuestsClicked={onGuestsClicked}
-        isOpened={isOpened}
-        onWindowScroll={onWindowScroll}
         onSearhButtonClick={onSearhButtonClick}
-        recaps={recaps}
       />
-    );
-  } else {
-    return (
-      <nav>
-        <div className="container">
-          <div className="logo">
-            <img
-              src={logo}
-              alt="windbnb-logo"
-              onClick={() => window.location.reload()}
-            />
-          </div>
-          <SearchPanel
-            onSearchPanelClick={onSearchPanelClick}
-            query={query}
-            onCancelIconClick={onCancelIconClick}
-            recaps={recaps}
-            adultGuests={adultGuests}
-            childGuests={childGuests}
-            onSearhButtonClick={onSearhButtonClick}
-          />
-        </div>
-      </nav>
-    );
-  }
+    </div>
+  );
+
+  const responsiveLayout = (
+    <NavResponsive
+      currentWidth={currentWidth}
+      onExpandedNavClick={onExpandedNavClick}
+      isFocused={isFocused}
+      onInputFocused={onInputFocused}
+      stays={stays}
+      onInputChange={onInputChange}
+      query={query}
+      onLiClick={onLiClick}
+      onGuestNumChanged={onGuestNumChanged}
+      adultGuests={adultGuests}
+      childGuests={childGuests}
+      onGuestsClicked={onGuestsClicked}
+      isOpened={isOpened}
+      onWindowScroll={onWindowScroll}
+      onSearhButtonClick={onSearhButtonClick}
+      recaps={recaps}
+    />
+  );
+
+  const expandedLayout = (
+    <NavExpanded
+      isFocused={isFocused}
+      onExpandedNavClick={onExpandedNavClick}
+      onInputFocused={onInputFocused}
+      stays={stays}
+      onInputChange={onInputChange}
+      query={query}
+      onLiClick={onLiClick}
+      onGuestNumChanged={onGuestNumChanged}
+      adultGuests={adultGuests}
+      childGuests={childGuests}
+      onGuestsClicked={onGuestsClicked}
+      isOpened={isOpened}
+      onWindowScroll={onWindowScroll}
+      onSearhButtonClick={onSearhButtonClick}
+      recaps={recaps}
+    />
+  );
+
+  return (
+    <nav
+      style={
+        isExpanded === true
+          ? currentWidth < 790
+            ? { height: "24rem" }
+            : { height: "21rem" }
+          : currentWidth <= 620
+          ? { height: "7rem" }
+          : { height: "5rem" }
+      }
+      onClick={onExpandedNavClick}
+      onWheel={onWindowScroll}
+    >
+      {isExpanded === true
+        ? currentWidth < 790
+          ? responsiveLayout
+          : expandedLayout
+        : defaultContent}
+    </nav>
+  );
 };
 
 export default NavBar;

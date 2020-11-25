@@ -1,4 +1,4 @@
-.nav-responsive {
+/* .nav-responsive {
   background-color: white;
   top: 0%;
   left: 0;
@@ -8,7 +8,7 @@
   padding-left: 6rem;
   padding-right: 6rem;
   flex-direction: column;
-}
+} */
 
 .selectors {
   display: grid;

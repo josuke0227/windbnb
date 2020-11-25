@@ -7,8 +7,6 @@ import SearchButtonExpanded from "./common/searchButtonExtended";
 import "./navResponsive.css";
 
 const NavExpanded = ({
-  onExpandedNavClick,
-  onWindowScroll,
   query,
   onInputFocused,
   onInputChange,
@@ -25,11 +23,7 @@ const NavExpanded = ({
   recaps,
 }) => {
   return (
-    <nav
-      className="nav-responsive"
-      onWheel={onWindowScroll}
-      onClick={onExpandedNavClick}
-    >
+    <div className="nav-responsive">
       <div className="selectors">
         <div className="windows">
           <LocationSelector
@@ -63,7 +57,7 @@ const NavExpanded = ({
           currentWidth={currentWidth}
         />
       </div>
-    </nav>
+    </div>
   );
 };
 

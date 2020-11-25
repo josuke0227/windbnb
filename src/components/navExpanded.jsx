@@ -8,7 +8,6 @@ import "./navExpanded.css";
 
 const NavExpanded = ({
   isFocused,
-  onExpandedNavClick,
   onInputFocused,
   stays,
   onInputChange,
@@ -19,16 +18,11 @@ const NavExpanded = ({
   childGuests,
   onGuestsClicked,
   isOpened,
-  onWindowScroll,
   onSearhButtonClick,
   recaps,
 }) => {
   return (
-    <nav
-      className="nav-expanded"
-      onClick={onExpandedNavClick}
-      onWheel={onWindowScroll}
-    >
+    <div className="nav-expanded">
       <div className="search-panel-expanded">
         <LocationSelector
           query={query}
@@ -60,7 +54,7 @@ const NavExpanded = ({
         />
         <div className="dummy"></div>
       </div>
-    </nav>
+    </div>
   );
 };
 
