@@ -9,6 +9,7 @@ import logo from "../img/logo.png";
 
 const FlexLogo = styled(FlexItem)`
   text-align: start;
+  margin-bottom: 1rem;
 
   &:hover {
     cursor: pointer;
@@ -34,7 +35,7 @@ const Nav = styled.nav`
         ? "27rem"
         : "20rem"
       : props.width < 820
-      ? "7rem"
+      ? "8rem"
       : "5rem"};
   width: 100%;
   background-color: white;
