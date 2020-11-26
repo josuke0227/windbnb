@@ -5,14 +5,17 @@ import guestsRecap from "../util/guestsRecap";
 import SearchPanel from "./searchPanel";
 import FlexItem from "./styled-components/flexItem";
 import styled from "styled-components";
-import logo from "../img/logo.png";
+import logo from "../img/logo.svg";
 
 const FlexLogo = styled(FlexItem)`
   text-align: start;
-  margin-bottom: 1rem;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 820px) {
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -101,12 +104,13 @@ const NavBar = ({
   const recaps = guestsRecap(adultGuests, childGuests);
 
   const defaultContent = (
-    <NavContainer width={currentWidth}>
+    <NavContainer width={currentWidth} yAlign>
       <FlexLogo flex={currentWidth <= 1230 ? "0.6" : "1"}>
         <img
           src={logo}
           alt="windbnb-logo"
           onClick={() => window.location.reload()}
+          width="130px"
         />
       </FlexLogo>
       <FlexSearchPanel flex={currentWidth <= 1230 ? "1" : "0.6"}>
