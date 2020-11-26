@@ -59,22 +59,31 @@ const NavExpanded = ({
         </FlexItem>
       </ExpandedSearchPanelStyle>
       <FlexContainer direction="row" id="panels">
-        <FlexItem>
-          <LocationPanel
-            isFocused={isFocused}
-            query={query}
-            stays={stays}
-            onLiClick={onLiClick}
-          />
-        </FlexItem>
-        <FlexItem>
-          <GuestsPanel
-            adultGuests={adultGuests}
-            childGuests={childGuests}
-            isOpened={isOpened}
-            onGuestNumChanged={onGuestNumChanged}
-          />
-        </FlexItem>
+        {isFocused ? (
+          <FlexItem>
+            <LocationPanel
+              isFocused={isFocused}
+              query={query}
+              stays={stays}
+              onLiClick={onLiClick}
+            />
+          </FlexItem>
+        ) : (
+          <FlexItem id="dummy-location"></FlexItem>
+        )}
+        {isOpened ? (
+          <FlexItem>
+            <GuestsPanel
+              adultGuests={adultGuests}
+              childGuests={childGuests}
+              isOpened={isOpened}
+              onGuestNumChanged={onGuestNumChanged}
+            />
+          </FlexItem>
+        ) : (
+          <FlexItem id="dummy-guests"></FlexItem>
+        )}
+
         <FlexItem id="dummy"></FlexItem>
       </FlexContainer>
     </React.Fragment>

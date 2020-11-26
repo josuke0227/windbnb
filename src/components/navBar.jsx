@@ -174,6 +174,7 @@ const NavBar = ({
       width={currentWidth}
       onClick={onExpandedNavClick}
       onWheel={onWindowScroll}
+      id="nav"
     >
       {isExpanded === true
         ? currentWidth <= 780
