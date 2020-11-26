@@ -7,7 +7,12 @@ import Modal from "./components/modal";
 import NotFound from "./components/notFound";
 import Footer from "./components/footer";
 import ResultNumIndicator from "./components/common/resultNumIndicator";
+import Header from "./components/styled-components/header";
+import FlexItem from "./components/styled-components/flexItem";
+import MainWrapper from "./components/styled-components/mainWrapper";
+import ShowCase from "./components/styled-components/showCase";
 import "./index.css";
+import TextPrimary from "./components/styled-components/textPrimary";
 
 class App extends React.Component {
   state = {
@@ -27,25 +32,18 @@ class App extends React.Component {
     this.setState({ stays });
   }
 
-  onSearchPanelClick = () => {
+  onSearchPanelClick = (e) => {
+    const id = e.target.id;
+    if (id) return;
+
     this.setState({ isExpanded: true });
   };
 
   onExpandedNavClick = (e) => {
-    const closingFactors = [
-      "panels",
-      "nav-expanded",
-      "dummy",
-      "selectors",
-      "nav-responsive",
-    ];
-    const parentClassName = e.target.parentNode.className;
-    const className = e.target.className;
+    const closingFactors = ["panels", "dummy"];
     const id = e.target.id;
 
-    if (parentClassName === "search-panel-expanded" || id) return;
-
-    if (closingFactors.includes(className)) {
+    if (closingFactors.includes(id)) {
       this.setState({ isExpanded: false });
       return;
     }
@@ -89,9 +87,10 @@ class App extends React.Component {
 
   onGuestNumChanged = (e) => {
     let age = e.target.parentNode.id;
+    console.log(age);
     let selectedGeuests =
       age === "adult" ? this.state.adultGuests : this.state.childGuests;
-    e.target.className === "add" ? selectedGeuests++ : selectedGeuests--;
+    e.target.id === "add" ? selectedGeuests++ : selectedGeuests--;
     if (selectedGeuests < 0) return;
     this.setState({ [`${age}Guests`]: selectedGeuests });
   };
@@ -175,29 +174,32 @@ class App extends React.Component {
           onInputChange={this.onInputChange}
           onGuestsClicked={this.onGuestsClicked}
         />
-        <main onScroll={this.onWindowScroll}>
+        <MainWrapper onScroll={this.onWindowScroll}>
           <Modal
             isExpanded={this.state.isExpanded}
             onModalClick={this.onModalClick}
             onWindowScroll={this.onWindowScroll}
-            opacity={0.4}
-            zIndex={1}
+            zIndex="1"
           />
-          <header>
-            <div className="header-title">Stays in Finland</div>
-            <ResultNumIndicator result={this.state.result} stays={stays} />
-          </header>
+          <Header>
+            <FlexItem>
+              <TextPrimary size="24">Stays in Finland</TextPrimary>
+            </FlexItem>
+            <FlexItem flex="0.3">
+              <ResultNumIndicator result={this.state.result} stays={stays} />
+            </FlexItem>
+          </Header>
           {!Array.isArray(this.state.result) ? (
             <NotFound />
           ) : (
-            <div className="show-case">
+            <ShowCase>
               <Card stays={stays} />
-            </div>
+            </ShowCase>
           )}
           <footer>
             <Footer />
           </footer>
-        </main>
+        </MainWrapper>
       </React.Fragment>
     );
   }

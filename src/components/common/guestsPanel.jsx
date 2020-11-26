@@ -1,7 +1,6 @@
 import React from "react";
 import Counter from "./counter";
 import PanelContainer from "../styled-components/panelContainer";
-import "./guestsPanel.css";
 
 const GuestsPanel = ({
   isOpened,

@@ -14,7 +14,7 @@ const Nav = styled.nav`
       : "5rem"};
   width: 100%;
   background-color: white;
-  padding: ${(props) => (props.width < 620 ? "0 1rem" : "0 6rem")};
+  padding: ${(props) => (props.width <= 780 ? "0 1rem" : "0 7rem 0 6.5rem")};
   padding-top: 1rem;
   z-index: 2;
 `;

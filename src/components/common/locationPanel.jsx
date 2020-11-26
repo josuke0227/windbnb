@@ -1,6 +1,21 @@
 import React from "react";
+import styled from "styled-components";
+import Icon from "./icon";
 import PanelContainer from "../styled-components/panelContainer";
-import "./locationPanel.css";
+import placeNameExtracter from "../../util/placeNameExtracter";
+
+const StyledLi = styled.li`
+  list-style: none;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+`;
+
+const StyledSpan = styled.span`
+  &:hover {
+    border-bottom: 1px solid var(--winbnb-black);
+    cursor: pointer;
+  }
+`;
 
 const LocationPanel = ({
   isFocused,
@@ -13,18 +28,7 @@ const LocationPanel = ({
     return { city: stay["city"], country: stay["country"] };
   });
 
-  let extractedPlaces = [];
-  let hashMap = new Map();
-
-  for (let i = 0; i < places.length; i++) {
-    const current = places[i];
-    if (!hashMap.has(current.city)) {
-      hashMap.set(current.city, true);
-      extractedPlaces.push(current);
-    } else {
-      continue;
-    }
-  }
+  let extractedPlaces = placeNameExtracter(places);
 
   if (query)
     extractedPlaces = extractedPlaces.filter((p) =>
@@ -35,18 +39,15 @@ const LocationPanel = ({
     <PanelContainer id="location-panel" width={currentWidth} status={isFocused}>
       <ul>
         {extractedPlaces.map((place, index) => (
-          <li className="city" key={index} id={index}>
-            <span className="material-icons" id="location-icon">
-              location_on
-            </span>
-            <span
-              className="city-name"
+          <StyledLi key={index} id={index}>
+            <Icon name={"location_on"} />
+            <StyledSpan
               id="city-name"
               onClick={() => onLiClick(place.city, place.country)}
             >
               {place.city}, {place.country}
-            </span>
-          </li>
+            </StyledSpan>
+          </StyledLi>
         ))}
       </ul>
     </PanelContainer>

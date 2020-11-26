@@ -1,5 +1,15 @@
 import React from "react";
-import "./modal.css";
+import styled from "styled-components";
+
+const ModalStyle = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  z-index: ${(props) => (props.zIndex ? props.zIndex : "0")};
+  display: ${(props) => !props.isExpanded && "none"};
+  background-color: rgba(0, 0, 0, 0.4);
+`;
 
 const Modal = ({
   isExpanded,
@@ -7,22 +17,14 @@ const Modal = ({
   onWindowScroll,
   opacity,
   zIndex,
-}) => {
-  return (
-    <div
-      className="modal"
-      style={
-        isExpanded
-          ? {
-              backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-              zIndex: `${zIndex}`,
-            }
-          : { display: "none" }
-      }
-      onClick={onModalClick}
-      onWheel={onWindowScroll}
-    ></div>
-  );
-};
+}) => (
+  <ModalStyle
+    isExpanded={isExpanded}
+    zIndex={zIndex}
+    onClick={onModalClick}
+    onWheel={onWindowScroll}
+    opacity={opacity}
+  ></ModalStyle>
+);
 
 export default Modal;

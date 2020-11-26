@@ -1,5 +1,40 @@
 import React from "react";
-import "./locationSelector.css";
+import styled from "styled-components";
+
+const LocationWindowStyle = styled.div`
+  border-right: 1px solid var(--gadget-gray);
+  font-size: var(--small-font-size);
+  padding: 8.4px 1rem 0px 1rem;
+  border: ${(props) =>
+    props.isFocused && "1px solid var(--winbnb-black) !important"};
+  border-radius: ${(props) => props.isFocused && "16px"};
+
+  @media (max-width: 450px) {
+    border-bottom: 1px solid var(--gadget-gray);
+    border-right: none;
+  }
+`;
+
+const FormStyle = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const FormLabel = styled.label`
+  padding-bottom: 0.2rem;
+`;
+
+const InputStyle = styled.input`
+  width: 90%;
+  font-size: 100%;
+
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: var(--unfocusd-gray);
+  }
+`;
 
 const LocationSelector = ({
   query,
@@ -8,22 +43,16 @@ const LocationSelector = ({
   isFocused,
 }) => {
   return (
-    <div
-      className="place-expanded"
-      id="place-expanded"
-      style={
-        isFocused ? { border: "1px solid #333333", borderRadius: "16px" } : null
-      }
-    >
-      <form
-        className="place-form-expanded"
-        id="place-form"
+    <LocationWindowStyle isFocused={isFocused}>
+      <FormStyle
+        direction="column"
+        id="location-form"
         onSubmit={(e) => e.preventDefault()}
       >
-        <label htmlFor="place-input" id="form-label">
+        <FormLabel htmlFor="place-input" id="form-label">
           LOCATION
-        </label>
-        <input
+        </FormLabel>
+        <InputStyle
           type="text"
           id="place-input"
           placeholder="Place"
@@ -31,8 +60,8 @@ const LocationSelector = ({
           onFocus={onInputFocused}
           onChange={onInputChange}
         />
-      </form>
-    </div>
+      </FormStyle>
+    </LocationWindowStyle>
   );
 };
 

@@ -1,64 +1,93 @@
 import React from "react";
-import SearchPanelContainer from "./styled-components/searchPanelContainer";
-import CancelIcon from "./common/cancelIcon";
+import Icon from "./common/icon";
+import styled from "styled-components";
+import FlexContainer from "./styled-components/flexContainer";
+import FlexItem from "./styled-components/flexItem";
+
+const SearchPanelContainer = styled(FlexContainer)`
+  padding-left: "30rem";
+  flex-direction: row;
+  border: 1px solid var(--gadget-gray);
+  border-radius: 16px;
+  height: 3.3rem;
+
+  &:hover {
+    box-shadow: var(--shadow);
+    border: none;
+  }
+`;
+
+const SearchPanelWindow = styled(FlexItem)`
+  border-right: 1px solid var(--gadget-gray);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const SearchPanelWindowEnd = styled(SearchPanelWindow)`
+  border-right: none;
+`;
+
+const WindowText = styled.div`
+  font-size: var(--small-font-size);
+  color: ${(props) =>
+    !props.content ? "var(--unfocusd-gray)" : "var(--winbnb-black)"};
+`;
 
 const SearchPanel = ({
   onSearchPanelClick,
   query,
   onCancelIconClick,
   recaps,
-  adultGuests,
-  childGuests,
   onSearhButtonClick,
   width,
 }) => {
   return (
     <SearchPanelContainer width={width}>
-      <div
-        onClick={onSearchPanelClick}
-        className="place"
-        style={query ? { color: "#333333", fontSize: "14px" } : null}
-      >
+      <SearchPanelWindow onClick={onSearchPanelClick} flex="0.9">
         {query ? (
           <React.Fragment>
-            <span className="content">{query}</span>
-            <CancelIcon id="place" onCancelIconClick={onCancelIconClick} />
+            <WindowText content={query}>{query}</WindowText>
+            <Icon
+              name="cancel"
+              id="place"
+              size="md-18"
+              color="red"
+              clickEvent={onCancelIconClick}
+            />
           </React.Fragment>
         ) : (
-          "Place"
+          <WindowText content={query}>Place</WindowText>
         )}
-      </div>
-      {recaps.map((recap, index) => (
-        <div
-          onClick={onSearchPanelClick}
-          className="guests"
-          key={index}
-          style={
-            adultGuests || childGuests
-              ? {
-                  color: "#333333",
-                  fontSize: "14px",
-                }
-              : null
-          }
-        >
-          {
-            <React.Fragment>
-              <span className="content">{recap}</span>
-              {recap === "Add Guests" ? null : (
-                <CancelIcon id={recap} onCancelIconClick={onCancelIconClick} />
-              )}
-            </React.Fragment>
-          }
-        </div>
-      ))}
-      <div
-        className="search-button"
-        id="search-button"
-        onClick={onSearhButtonClick}
-      >
-        <span className="material-icons md-18">search</span>
-      </div>
+      </SearchPanelWindow>
+      {!recaps ? (
+        <SearchPanelWindow onClick={onSearchPanelClick}>
+          <WindowText content={recaps}>Add Guests</WindowText>
+        </SearchPanelWindow>
+      ) : (
+        recaps.map((recap, index) => (
+          <SearchPanelWindow onClick={onSearchPanelClick} key={index}>
+            <WindowText content={recaps}>{recap}</WindowText>
+            <Icon
+              name="cancel"
+              id={recap}
+              size="md-18"
+              clickEvent={onCancelIconClick}
+              color="red"
+            />
+          </SearchPanelWindow>
+        ))
+      )}
+      <SearchPanelWindowEnd flex="0.3">
+        <Icon
+          name="search"
+          id="search-button-default"
+          color="red"
+          clickEvent={onSearhButtonClick}
+        />
+      </SearchPanelWindowEnd>
     </SearchPanelContainer>
   );
 };

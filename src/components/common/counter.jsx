@@ -1,5 +1,34 @@
 import React from "react";
-import "./counter.css";
+import styled from "styled-components";
+
+const CounterWrapper = styled.div`
+  margin-top: 0rem;
+`;
+
+const StyledDivTitle = styled.div`
+  margin-top: 0.5rem;
+  font-size: var(--small-font-size);
+  font-weight: 600;
+  color: var(--winbnb-black);
+`;
+
+const StyledDivCondition = styled.div`
+  color: var(--unfocusd-gray);
+  font-size: var(--small-font-size);
+  margin-bottom: 0.7rem;
+`;
+
+const ButtonStyle = styled.span`
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  padding: 0 6.475px 0;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--gadget-gray);
+  }
+`;
 
 const Counter = ({
   title,
@@ -9,21 +38,19 @@ const Counter = ({
   onGuestNumChanged,
 }) => {
   return (
-    <div className="counter">
-      <div className="title">{title}</div>
-      <div className="condition">{condition}</div>
+    <CounterWrapper>
+      <StyledDivTitle>{title}</StyledDivTitle>
+      <StyledDivCondition>{condition}</StyledDivCondition>
       <div className="control-panel" id={customerAttribution}>
-        <span className="subtract" id="subtract" onClick={onGuestNumChanged}>
+        <ButtonStyle id="subtract" onClick={onGuestNumChanged}>
           -
-        </span>
-        <span className="current-count" id="current-count">
-          {count}
-        </span>
-        <span className="add" id="add" onClick={onGuestNumChanged}>
+        </ButtonStyle>
+        <span>&nbsp;{count}&nbsp;</span>
+        <ButtonStyle id="add" onClick={onGuestNumChanged}>
           +
-        </span>
+        </ButtonStyle>
       </div>
-    </div>
+    </CounterWrapper>
   );
 };
 

@@ -1,19 +1,41 @@
 import React from "react";
-import "./notFound.css";
+import styled from "styled-components";
+import TextPrimary from "./styled-components/textPrimary";
+
+const Wrapper = styled.div`
+  margin: 0 7rem 0 6rem;
+  @media (max-width: 620px) {
+    margin: 0 1rem;
+  }
+`;
+
+const Title = styled.h1`
+  color: var(--winbnb-black);
+`;
+
+const Span = styled.span`
+  color: var(--icon-red);
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const NotFound = () => {
   return (
-    <React.Fragment>
-      <h1>Sorry,</h1>
-      <div> We couldn't match any stays you're looking for...</div>
-      <div>
+    <Wrapper>
+      <Title>Sorry,</Title>
+      <TextPrimary>
+        We couldn't match any stays you're looking for...
+      </TextPrimary>
+      <TextPrimary>
         Please click
-        <span className="back" onClick={() => window.location.reload()}>
+        <Span className="back" onClick={() => window.location.reload()}>
           &nbsp;here&nbsp;
-        </span>
+        </Span>
         to reload.
-      </div>
-    </React.Fragment>
+      </TextPrimary>
+    </Wrapper>
   );
 };
 

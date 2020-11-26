@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./styled-components/nav";
 import NavContainer from "./styled-components/navContainer";
+import FlexItem from "./styled-components/flexItem";
 import NavResponsive from "./navResponsive";
 import NavExpanded from "./navExpanded";
 import guestsRecap from "../util/guestsRecap";
 import SearchPanel from "./searchPanel";
 import logo from "../img/logo.png";
-import "./navBar.css";
+import styled from "styled-components";
+
+const FlexLogo = styled(FlexItem)`
+  text-align: start;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const FlexSearchPanel = styled(FlexItem)`
+  padding-left: 10rem;
+
+  @media (max-width: 1230px) {
+    flex: "1";
+    padding-left: 0;
+  }
+`;
 
 const getWidth = () =>
   window.innerWidth ||
@@ -61,30 +79,31 @@ const NavBar = ({
 
   const defaultContent = (
     <NavContainer width={currentWidth}>
-      <div className="logo">
+      <FlexLogo flex={currentWidth <= 1230 ? "0.6" : "1"}>
         <img
           src={logo}
           alt="windbnb-logo"
           onClick={() => window.location.reload()}
         />
-      </div>
-      <SearchPanel
-        onSearchPanelClick={onSearchPanelClick}
-        query={query}
-        onCancelIconClick={onCancelIconClick}
-        recaps={recaps}
-        adultGuests={adultGuests}
-        childGuests={childGuests}
-        onSearhButtonClick={onSearhButtonClick}
-        width={currentWidth}
-      />
+      </FlexLogo>
+      <FlexSearchPanel flex={currentWidth <= 1230 ? "1" : "0.6"}>
+        <SearchPanel
+          onSearchPanelClick={onSearchPanelClick}
+          query={query}
+          onCancelIconClick={onCancelIconClick}
+          recaps={recaps}
+          adultGuests={adultGuests}
+          childGuests={childGuests}
+          onSearhButtonClick={onSearhButtonClick}
+          width={currentWidth}
+        />
+      </FlexSearchPanel>
     </NavContainer>
   );
 
   const responsiveLayout = (
     <NavResponsive
       currentWidth={currentWidth}
-      onExpandedNavClick={onExpandedNavClick}
       isFocused={isFocused}
       onInputFocused={onInputFocused}
       stays={stays}
@@ -105,7 +124,6 @@ const NavBar = ({
   const expandedLayout = (
     <NavExpanded
       isFocused={isFocused}
-      onExpandedNavClick={onExpandedNavClick}
       onInputFocused={onInputFocused}
       stays={stays}
       onInputChange={onInputChange}

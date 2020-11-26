@@ -1,11 +1,18 @@
 import React from "react";
-import "./resultNumIndicator.css";
+import styled from "styled-components";
+
+const ShowCaseCounterText = styled.div`
+  color: var(--header-gray);
+  font-size: var(--small-font-size);
+  flex: 0.3;
+  text-align: end;
+`;
 
 const ResultNumIndicator = ({ result, stays }) => {
   return (
-    <div className="stays-counter">
+    <ShowCaseCounterText>
       {!Array.isArray(result) ? "0 Stays" : `${stays.length} Stays`}
-    </div>
+    </ShowCaseCounterText>
   );
 };
 
