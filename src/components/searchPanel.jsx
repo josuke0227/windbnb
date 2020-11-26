@@ -28,6 +28,13 @@ const SearchPanelWindow = styled(FlexItem)`
 
 const SearchPanelWindowEnd = styled(SearchPanelWindow)`
   border-right: none;
+  border-bottom-right-radius: 16px;
+  border-top-right-radius: 16px;
+
+  &:hover {
+    background-color: rgba(252, 252, 252, 1);
+    cursor: pointer;
+  }
 `;
 
 const WindowText = styled.div`
