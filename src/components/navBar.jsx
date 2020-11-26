@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./styled-components/nav";
-import NavContainer from "./styled-components/navContainer";
 import FlexItem from "./styled-components/flexItem";
 import NavResponsive from "./navResponsive";
 import NavExpanded from "./navExpanded";
@@ -24,6 +22,30 @@ const FlexSearchPanel = styled(FlexItem)`
     flex: "1";
     padding-left: 0;
   }
+`;
+
+const Nav = styled.nav`
+  position: fixed;
+  top: 0%;
+  left: 0;
+  height: ${(props) =>
+    props.isExpanded === true
+      ? props.width <= 450
+        ? "24rem"
+        : "20rem"
+      : props.width < 820
+      ? "7rem"
+      : "5rem"};
+  width: 100%;
+  background-color: white;
+  padding: ${(props) => (props.width <= 780 ? "0 1rem" : "0 7rem 0 6.5rem")};
+  padding-top: 1rem;
+  z-index: 2;
+`;
+
+const NavContainer = styled.div`
+  display: flex;
+  flex-direction: ${(props) => (props.width < 820 ? "column" : "row")};
 `;
 
 const getWidth = () =>
