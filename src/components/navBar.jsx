@@ -6,6 +6,7 @@ import SearchPanel from "./searchPanel";
 import FlexItem from "./styled-components/flexItem";
 import styled from "styled-components";
 import logo from "../img/logo.svg";
+import FlexContainer from "./styled-components/flexContainer";
 
 const FlexLogo = styled(FlexItem)`
   text-align: start;
@@ -23,7 +24,7 @@ const FlexSearchPanel = styled(FlexItem)`
   padding-left: 10rem;
 
   @media (max-width: 1230px) {
-    flex: "1";
+    width: 100%;
     padding-left: 0;
   }
 `;
@@ -36,19 +37,18 @@ const Nav = styled.nav`
     props.isExpanded === true
       ? props.width <= 450
         ? "27rem"
-        : "20rem"
+        : "21rem"
       : props.width < 820
       ? "8rem"
       : "5rem"};
   width: 100%;
   background-color: white;
-  padding: ${(props) => (props.width <= 780 ? "0 1rem" : "0 7rem 0 6.5rem")};
+  padding: ${(props) => (props.width <= 620 ? "0 1rem" : "0 7rem 0 6.5rem")};
   padding-top: 1rem;
   z-index: 2;
 `;
 
-const NavContainer = styled.div`
-  display: flex;
+const NavContainer = styled(FlexContainer)`
   flex-direction: ${(props) => (props.width < 820 ? "column" : "row")};
 `;
 
@@ -104,7 +104,7 @@ const NavBar = ({
   const recaps = guestsRecap(adultGuests, childGuests);
 
   const defaultContent = (
-    <NavContainer width={currentWidth} yAlign>
+    <NavContainer width={currentWidth} xAlign>
       <FlexLogo flex={currentWidth <= 1230 ? "0.6" : "1"}>
         <img
           src={logo}
