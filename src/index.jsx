@@ -11,8 +11,8 @@ import Header from "./components/styled-components/header";
 import FlexItem from "./components/styled-components/flexItem";
 import MainWrapper from "./components/styled-components/mainWrapper";
 import ShowCase from "./components/styled-components/showCase";
-import "./index.css";
 import TextPrimary from "./components/styled-components/textPrimary";
+import "./index.css";
 
 class App extends React.Component {
   state = {
@@ -163,23 +163,23 @@ class App extends React.Component {
           childGuests={this.state.childGuests}
           isOpened={this.state.isOpened}
           onChange={this.onInputChange}
-          onSearchPanelClick={this.onSearchPanelClick}
-          onExpandedNavClick={this.onExpandedNavClick}
-          onInputFocused={this.onInputFocused}
-          onLiClick={this.onLiClick}
-          onGuestNumChanged={this.onGuestNumChanged}
-          onWindowScroll={this.onWindowScroll}
-          onSearhButtonClick={this.onSearhButtonClick}
           onCancelIconClick={this.onCancelIconClick}
-          onInputChange={this.onInputChange}
+          onExpandedNavClick={this.onExpandedNavClick}
+          onGuestNumChanged={this.onGuestNumChanged}
           onGuestsClicked={this.onGuestsClicked}
+          onInputFocused={this.onInputFocused}
+          onInputChange={this.onInputChange}
+          onLiClick={this.onLiClick}
+          onSearhButtonClick={this.onSearhButtonClick}
+          onSearchPanelClick={this.onSearchPanelClick}
+          onWindowScroll={this.onWindowScroll}
         />
         <MainWrapper onScroll={this.onWindowScroll}>
           <Modal
             isExpanded={this.state.isExpanded}
+            zIndex="1"
             onModalClick={this.onModalClick}
             onWindowScroll={this.onWindowScroll}
-            zIndex="1"
           />
           <Header>
             <FlexItem>

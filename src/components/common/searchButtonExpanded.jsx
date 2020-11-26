@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../common/icon";
+import Icon from "./icon";
 import styled from "styled-components";
 import FlexItem from "../styled-components/flexItem";
 

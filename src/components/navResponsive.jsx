@@ -4,7 +4,7 @@ import LocationPanel from "./common/locationPanel";
 import LocationSelector from "./common/locationSelector";
 import GuestsIndicator from "./common/guestsIndicator";
 import GuestsPanel from "./common/guestsPanel";
-import SearchButtonExpanded from "./common/searchButtonExtended";
+import SearchButtonExpanded from "./common/searchButtonExpanded";
 import FlexContainer from "./styled-components/flexContainer";
 import FlexItem from "./styled-components/flexItem";
 import styled from "styled-components";
@@ -55,21 +55,21 @@ const CloseWrapper = styled(FlexItem)`
 `;
 
 const NavExpanded = ({
-  query,
-  onInputFocused,
-  onInputChange,
-  onGuestsClicked,
   adultGuests,
   childGuests,
-  onSearhButtonClick,
-  isFocused,
-  onLiClick,
-  onGuestNumChanged,
-  onExpandedNavClick,
-  stays,
-  isOpened,
   currentWidth,
+  isFocused,
+  isOpened,
+  query,
   recaps,
+  stays,
+  onExpandedNavClick,
+  onGuestNumChanged,
+  onGuestsClicked,
+  onInputChange,
+  onInputFocused,
+  onLiClick,
+  onSearhButtonClick,
 }) => {
   return (
     <React.Fragment>
@@ -84,19 +84,19 @@ const NavExpanded = ({
           <PlaceGuestContainer direction="row">
             <FlexItem>
               <LocationSelector
-                query={query}
-                onInputFocused={onInputFocused}
-                onInputChange={onInputChange}
                 isFocused={isFocused}
+                query={query}
+                onInputChange={onInputChange}
+                onInputFocused={onInputFocused}
               />
             </FlexItem>
             <FlexItem>
               <GuestsIndicator
-                recaps={recaps}
-                onGuestsClicked={onGuestsClicked}
                 adultGuests={adultGuests}
                 childGuests={childGuests}
                 isOpened={isOpened}
+                recaps={recaps}
+                onGuestsClicked={onGuestsClicked}
               />
             </FlexItem>
           </PlaceGuestContainer>
@@ -106,21 +106,21 @@ const NavExpanded = ({
         </GridArea>
         <GridArea name="location">
           <LocationPanel
+            currentWidth={currentWidth}
             isFocused={isFocused}
-            stays={stays}
             onLiClick={onLiClick}
             query={query}
-            currentWidth={currentWidth}
+            stays={stays}
             onInputChange={onInputChange}
           />
         </GridArea>
         <GridArea name="guests">
           <GuestsPanel
-            isOpened={isOpened}
-            onGuestNumChanged={onGuestNumChanged}
             adultGuests={adultGuests}
             childGuests={childGuests}
             currentWidth={currentWidth}
+            isOpened={isOpened}
+            onGuestNumChanged={onGuestNumChanged}
           />
         </GridArea>
       </GridTemplateAreas>

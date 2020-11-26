@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import FlexItem from "./styled-components/flexItem";
 import NavResponsive from "./navResponsive";
 import NavExpanded from "./navExpanded";
 import guestsRecap from "../util/guestsRecap";
 import SearchPanel from "./searchPanel";
-import logo from "../img/logo.png";
+import FlexItem from "./styled-components/flexItem";
 import styled from "styled-components";
+import logo from "../img/logo.png";
 
 const FlexLogo = styled(FlexItem)`
   text-align: start;
@@ -78,23 +78,23 @@ function useCurrentWidth() {
 }
 
 const NavBar = ({
-  isExpanded,
-  isFocused,
-  onInputFocused,
-  stays,
-  query,
-  onSearchPanelClick,
-  onExpandedNavClick,
-  onLiClick,
-  onGuestNumChanged,
   adultGuests,
   childGuests,
-  onGuestsClicked,
+  isExpanded,
+  isFocused,
   isOpened,
-  onWindowScroll,
-  onSearhButtonClick,
-  onCancelIconClick,
+  stays,
+  query,
+  onExpandedNavClick,
+  onGuestNumChanged,
+  onGuestsClicked,
   onInputChange,
+  onInputFocused,
+  onLiClick,
+  onSearhButtonClick,
+  onSearchPanelClick,
+  onCancelIconClick,
+  onWindowScroll,
 }) => {
   const currentWidth = useCurrentWidth();
   const recaps = guestsRecap(adultGuests, childGuests);
@@ -110,14 +110,14 @@ const NavBar = ({
       </FlexLogo>
       <FlexSearchPanel flex={currentWidth <= 1230 ? "1" : "0.6"}>
         <SearchPanel
-          onSearchPanelClick={onSearchPanelClick}
-          query={query}
-          onCancelIconClick={onCancelIconClick}
-          recaps={recaps}
           adultGuests={adultGuests}
           childGuests={childGuests}
-          onSearhButtonClick={onSearhButtonClick}
+          query={query}
+          recaps={recaps}
           width={currentWidth}
+          onCancelIconClick={onCancelIconClick}
+          onSearhButtonClick={onSearhButtonClick}
+          onSearchPanelClick={onSearchPanelClick}
         />
       </FlexSearchPanel>
     </NavContainer>
@@ -125,50 +125,50 @@ const NavBar = ({
 
   const responsiveLayout = (
     <NavResponsive
-      onExpandedNavClick={onExpandedNavClick}
-      currentWidth={currentWidth}
-      isFocused={isFocused}
-      onInputFocused={onInputFocused}
-      stays={stays}
-      onInputChange={onInputChange}
-      query={query}
-      onLiClick={onLiClick}
-      onGuestNumChanged={onGuestNumChanged}
       adultGuests={adultGuests}
       childGuests={childGuests}
-      onGuestsClicked={onGuestsClicked}
+      currentWidth={currentWidth}
+      isFocused={isFocused}
       isOpened={isOpened}
-      onWindowScroll={onWindowScroll}
-      onSearhButtonClick={onSearhButtonClick}
+      query={query}
       recaps={recaps}
+      stays={stays}
+      onExpandedNavClick={onExpandedNavClick}
+      onGuestsClicked={onGuestsClicked}
+      onGuestNumChanged={onGuestNumChanged}
+      onInputChange={onInputChange}
+      onInputFocused={onInputFocused}
+      onLiClick={onLiClick}
+      onSearhButtonClick={onSearhButtonClick}
+      onWindowScroll={onWindowScroll}
     />
   );
 
   const expandedLayout = (
     <NavExpanded
-      isFocused={isFocused}
-      onInputFocused={onInputFocused}
-      stays={stays}
-      onInputChange={onInputChange}
-      query={query}
-      onLiClick={onLiClick}
-      onGuestNumChanged={onGuestNumChanged}
-      adultGuests={adultGuests}
       childGuests={childGuests}
-      onGuestsClicked={onGuestsClicked}
+      adultGuests={adultGuests}
+      isFocused={isFocused}
       isOpened={isOpened}
-      onWindowScroll={onWindowScroll}
-      onSearhButtonClick={onSearhButtonClick}
+      query={query}
       recaps={recaps}
+      stays={stays}
+      onGuestsClicked={onGuestsClicked}
+      onGuestNumChanged={onGuestNumChanged}
+      onInputChange={onInputChange}
+      onInputFocused={onInputFocused}
+      onLiClick={onLiClick}
+      onSearhButtonClick={onSearhButtonClick}
+      onWindowScroll={onWindowScroll}
     />
   );
 
   return (
     <Nav
+      isExpanded={isExpanded}
+      width={currentWidth}
       onClick={onExpandedNavClick}
       onWheel={onWindowScroll}
-      width={currentWidth}
-      isExpanded={isExpanded}
     >
       {isExpanded === true
         ? currentWidth <= 780

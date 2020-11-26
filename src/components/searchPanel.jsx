@@ -37,12 +37,12 @@ const WindowText = styled.div`
 `;
 
 const SearchPanel = ({
-  onSearchPanelClick,
   query,
-  onCancelIconClick,
   recaps,
-  onSearhButtonClick,
   width,
+  onCancelIconClick,
+  onSearhButtonClick,
+  onSearchPanelClick,
 }) => {
   return (
     <SearchPanelContainer width={width}>
@@ -51,11 +51,11 @@ const SearchPanel = ({
           <React.Fragment>
             <WindowText content={query}>{query}</WindowText>
             <Icon
-              name="cancel"
-              id="place"
-              size="md-18"
               color="red"
               clickEvent={onCancelIconClick}
+              id="place"
+              size="md-18"
+              name="cancel"
             />
           </React.Fragment>
         ) : (
@@ -71,21 +71,21 @@ const SearchPanel = ({
           <SearchPanelWindow onClick={onSearchPanelClick} key={index}>
             <WindowText content={recaps}>{recap}</WindowText>
             <Icon
-              name="cancel"
+              color="red"
+              clickEvent={onCancelIconClick}
               id={recap}
               size="md-18"
-              clickEvent={onCancelIconClick}
-              color="red"
+              name="cancel"
             />
           </SearchPanelWindow>
         ))
       )}
       <SearchPanelWindowEnd flex="0.3">
         <Icon
-          name="search"
-          id="search-button-default"
           color="red"
           clickEvent={onSearhButtonClick}
+          id="search-button-default"
+          name="search"
         />
       </SearchPanelWindowEnd>
     </SearchPanelContainer>

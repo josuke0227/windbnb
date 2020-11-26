@@ -33,8 +33,8 @@ const GuestsIndicator = ({ onGuestsClicked, recaps, isOpened }) => {
   return (
     <GuestContainer
       id="guests-expanded"
-      onClick={onGuestsClicked}
       isOpened={isOpened}
+      onClick={onGuestsClicked}
     >
       <StyledSpanTitle id="guests-title">GUESTS</StyledSpanTitle>
       <GuestTextToggler id="guests-text" recaps={recaps}>

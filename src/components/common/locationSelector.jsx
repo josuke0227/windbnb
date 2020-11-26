@@ -37,10 +37,10 @@ const InputStyle = styled.input`
 `;
 
 const LocationSelector = ({
-  query,
-  onInputFocused,
-  onInputChange,
   isFocused,
+  query,
+  onInputChange,
+  onInputFocused,
 }) => {
   return (
     <LocationWindowStyle isFocused={isFocused}>
@@ -53,12 +53,12 @@ const LocationSelector = ({
           LOCATION
         </FormLabel>
         <InputStyle
-          type="text"
           id="place-input"
           placeholder="Place"
+          type="text"
           value={query}
-          onFocus={onInputFocused}
           onChange={onInputChange}
+          onFocus={onInputFocused}
         />
       </FormStyle>
     </LocationWindowStyle>

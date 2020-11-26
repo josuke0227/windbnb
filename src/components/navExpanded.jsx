@@ -3,7 +3,7 @@ import LocationPanel from "./common/locationPanel";
 import LocationSelector from "./common/locationSelector";
 import GuestsIndicator from "./common/guestsIndicator";
 import GuestsPanel from "./common/guestsPanel";
-import SearchButtonExpanded from "./common/searchButtonExtended";
+import SearchButtonExpanded from "./common/searchButtonExpanded";
 import styled from "styled-components";
 import FlexContainer from "./styled-components/flexContainer";
 import FlexItem from "./styled-components/flexItem";
@@ -20,38 +20,38 @@ const ExpandedSearchPanelStyle = styled.div`
 `;
 
 const NavExpanded = ({
-  isFocused,
-  onInputFocused,
-  stays,
-  onInputChange,
-  query,
-  onLiClick,
-  onGuestNumChanged,
   adultGuests,
   childGuests,
-  onGuestsClicked,
+  isFocused,
   isOpened,
-  onSearhButtonClick,
+  query,
   recaps,
+  stays,
+  onGuestsClicked,
+  onGuestNumChanged,
+  onInputChange,
+  onInputFocused,
+  onLiClick,
+  onSearhButtonClick,
 }) => {
   return (
     <React.Fragment>
       <ExpandedSearchPanelStyle>
         <FlexItem>
           <LocationSelector
-            query={query}
-            onInputFocused={onInputFocused}
-            onInputChange={onInputChange}
             isFocused={isFocused}
+            query={query}
+            onInputChange={onInputChange}
+            onInputFocused={onInputFocused}
           />
         </FlexItem>
         <FlexItem>
           <GuestsIndicator
-            onGuestsClicked={onGuestsClicked}
             adultGuests={adultGuests}
             childGuests={childGuests}
-            recaps={recaps}
             isOpened={isOpened}
+            recaps={recaps}
+            onGuestsClicked={onGuestsClicked}
           />
         </FlexItem>
         <FlexItem>
@@ -62,17 +62,17 @@ const NavExpanded = ({
         <FlexItem>
           <LocationPanel
             isFocused={isFocused}
+            query={query}
             stays={stays}
             onLiClick={onLiClick}
-            query={query}
           />
         </FlexItem>
         <FlexItem>
           <GuestsPanel
-            isOpened={isOpened}
-            onGuestNumChanged={onGuestNumChanged}
             adultGuests={adultGuests}
             childGuests={childGuests}
+            isOpened={isOpened}
+            onGuestNumChanged={onGuestNumChanged}
           />
         </FlexItem>
         <FlexItem id="dummy"></FlexItem>
