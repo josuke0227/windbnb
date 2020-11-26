@@ -1,4 +1,5 @@
 import React from "react";
+import Icon from "./common/icon";
 import LocationPanel from "./common/locationPanel";
 import LocationSelector from "./common/locationSelector";
 import GuestsIndicator from "./common/guestsIndicator";
@@ -39,6 +40,20 @@ const PlaceGuestContainer = styled(FlexContainer)`
   }
 `;
 
+const NavHeaderContainer = styled(FlexContainer)`
+  padding-bottom: 0.5rem;
+  display: ${(props) => (props.width <= 450 ? "flex" : "none")};
+`;
+
+const NavHeader = styled(FlexItem)`
+  font-size: var(--small-font-size);
+  color: var(--winbnb-black);
+`;
+
+const CloseWrapper = styled(FlexItem)`
+  text-align: end;
+`;
+
 const NavExpanded = ({
   query,
   onInputFocused,
@@ -50,57 +65,66 @@ const NavExpanded = ({
   isFocused,
   onLiClick,
   onGuestNumChanged,
+  onExpandedNavClick,
   stays,
   isOpened,
   currentWidth,
   recaps,
 }) => {
   return (
-    <GridTemplateAreas>
-      <GridArea name="windows">
-        <PlaceGuestContainer direction="row">
-          <FlexItem>
-            <LocationSelector
-              query={query}
-              onInputFocused={onInputFocused}
-              onInputChange={onInputChange}
-              isFocused={isFocused}
-            />
-          </FlexItem>
-          <FlexItem>
-            <GuestsIndicator
-              recaps={recaps}
-              onGuestsClicked={onGuestsClicked}
-              adultGuests={adultGuests}
-              childGuests={childGuests}
-              isOpened={isOpened}
-            />
-          </FlexItem>
-        </PlaceGuestContainer>
-      </GridArea>
-      <GridArea name="search">
-        <SearchButtonExpanded onSearhButtonClick={onSearhButtonClick} />
-      </GridArea>
-      <GridArea name="location">
-        <LocationPanel
-          isFocused={isFocused}
-          stays={stays}
-          onLiClick={onLiClick}
-          query={query}
-          currentWidth={currentWidth}
-          onInputChange={onInputChange}
-        />
-      </GridArea>
-      <GridArea name="guests">
-        <GuestsPanel
-          isOpened={isOpened}
-          onGuestNumChanged={onGuestNumChanged}
-          adultGuests={adultGuests}
-          childGuests={childGuests}
-          currentWidth={currentWidth}
-        />
-      </GridArea>
-    </GridTemplateAreas>
+    <React.Fragment>
+      <NavHeaderContainer width={currentWidth} xAlign>
+        <NavHeader>Edit your search</NavHeader>
+        <CloseWrapper>
+          <Icon name="close" clickEvent={onExpandedNavClick} id="close" />
+        </CloseWrapper>
+      </NavHeaderContainer>
+      <GridTemplateAreas>
+        <GridArea name="windows">
+          <PlaceGuestContainer direction="row">
+            <FlexItem>
+              <LocationSelector
+                query={query}
+                onInputFocused={onInputFocused}
+                onInputChange={onInputChange}
+                isFocused={isFocused}
+              />
+            </FlexItem>
+            <FlexItem>
+              <GuestsIndicator
+                recaps={recaps}
+                onGuestsClicked={onGuestsClicked}
+                adultGuests={adultGuests}
+                childGuests={childGuests}
+                isOpened={isOpened}
+              />
+            </FlexItem>
+          </PlaceGuestContainer>
+        </GridArea>
+        <GridArea name="search">
+          <SearchButtonExpanded onSearhButtonClick={onSearhButtonClick} />
+        </GridArea>
+        <GridArea name="location">
+          <LocationPanel
+            isFocused={isFocused}
+            stays={stays}
+            onLiClick={onLiClick}
+            query={query}
+            currentWidth={currentWidth}
+            onInputChange={onInputChange}
+          />
+        </GridArea>
+        <GridArea name="guests">
+          <GuestsPanel
+            isOpened={isOpened}
+            onGuestNumChanged={onGuestNumChanged}
+            adultGuests={adultGuests}
+            childGuests={childGuests}
+            currentWidth={currentWidth}
+          />
+        </GridArea>
+      </GridTemplateAreas>
+    </React.Fragment>
   );
 };
 

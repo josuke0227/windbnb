@@ -6,7 +6,7 @@ import Card from "./components/card";
 import Modal from "./components/modal";
 import NotFound from "./components/notFound";
 import Footer from "./components/footer";
-import ResultNumIndicator from "./components/common/resultNumIndicator";
+import ResultNumIndicator from "./components/resultNumIndicator";
 import Header from "./components/styled-components/header";
 import FlexItem from "./components/styled-components/flexItem";
 import MainWrapper from "./components/styled-components/mainWrapper";
@@ -40,7 +40,7 @@ class App extends React.Component {
   };
 
   onExpandedNavClick = (e) => {
-    const closingFactors = ["panels", "dummy"];
+    const closingFactors = ["panels", "dummy", "close"];
     const id = e.target.id;
 
     if (closingFactors.includes(id)) {

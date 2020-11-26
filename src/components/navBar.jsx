@@ -31,7 +31,7 @@ const Nav = styled.nav`
   height: ${(props) =>
     props.isExpanded === true
       ? props.width <= 450
-        ? "24rem"
+        ? "27rem"
         : "20rem"
       : props.width < 820
       ? "7rem"
@@ -125,6 +125,7 @@ const NavBar = ({
 
   const responsiveLayout = (
     <NavResponsive
+      onExpandedNavClick={onExpandedNavClick}
       currentWidth={currentWidth}
       isFocused={isFocused}
       onInputFocused={onInputFocused}
