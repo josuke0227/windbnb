@@ -40,9 +40,14 @@ class App extends React.Component {
   };
 
   onExpandedNavClick = (e) => {
-    const closingFactors = ["dummy", "dummy-location", "dummy-guests", "nav"];
+    const closingFactors = [
+      "dummy",
+      "dummy-location",
+      "dummy-guests",
+      "nav",
+      "close",
+    ];
     const id = e.target.id;
-    console.log(id);
 
     if (closingFactors.includes(id)) {
       this.setState({ isExpanded: false });
